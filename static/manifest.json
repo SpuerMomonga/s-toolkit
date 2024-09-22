@@ -1,0 +1,21 @@
+{
+  "name": "S Toolkit",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "一个好用的小工具",
+  "permissions": ["sidePanel", "contextMenus", "storage"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "48": "icon/icon-128.png",
+    "16": "icon/icon-16.png"
+  },
+  "side_panel": {
+    "default_path": "side-panel.html"
+  }
+}
