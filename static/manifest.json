@@ -12,7 +12,7 @@
     "type": "module"
   },
   "icons": {
-    "48": "icon/icon-128.png",
+    "48": "icon/icon-48.png",
     "16": "icon/icon-16.png"
   },
   "side_panel": {
