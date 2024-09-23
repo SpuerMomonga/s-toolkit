@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-export function App() {
-  return <div>hello, world</div>;
-}
+import { createRoot } from 'react-dom/client';
+import App from './app';
+import '../globals.css';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const root = createRoot(document.getElementById('root') as HTMLElement);
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
