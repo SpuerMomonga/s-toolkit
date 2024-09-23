@@ -17,6 +17,15 @@ const common = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader', // 将样式添加到DOM中
+          'css-loader',   // 解析CSS
+          'postcss-loader', // 使用PostCSS
+        ],
+      },
     ],
   },
   resolve: {
@@ -35,6 +44,7 @@ if (env.NODE_ENV === 'production') {
 } else {
   module.exports = {
     ...common,
+    // mode: 'production',
     mode: 'development',
     devtool: 'inline-source-map',
   };
