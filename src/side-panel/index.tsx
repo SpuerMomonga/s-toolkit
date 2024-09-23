@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '../globals.css';
-
-export function App() {
-  return <div>hello, world</div>;
-}
+import App from './app';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
