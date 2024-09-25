@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
+import { AvatarMenubar } from './menubar/avatar';
 
 const Sidebar: React.FC = () => {
   const links: LinkItem[] = [
@@ -57,17 +58,19 @@ const Sidebar: React.FC = () => {
               设置
             </TooltipContent>
           </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Avatar className="h-9 w-9">
-                <AvatarImage src="#" alt="SpuerMomonga" />
-                <AvatarFallback>ST</AvatarFallback>
-              </Avatar>
-            </TooltipTrigger>
-            <TooltipContent side="right" className="flex items-center gap-4">
-              账户
-            </TooltipContent>
-          </Tooltip>
+          <AvatarMenubar>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Avatar className="h-9 w-9">
+                  <AvatarImage src="#" alt="SpuerMomonga" />
+                  <AvatarFallback>ST</AvatarFallback>
+                </Avatar>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="flex items-center gap-4">
+                账户
+              </TooltipContent>
+            </Tooltip>
+          </AvatarMenubar>
         </div>
       </div>
     </TooltipProvider>
