@@ -22,7 +22,7 @@ const common = {
         exclude: /node_modules/,
         use: [
           'style-loader', // 将样式添加到DOM中
-          'css-loader',   // 解析CSS
+          'css-loader', // 解析CSS
           'postcss-loader', // 使用PostCSS
         ],
       },
@@ -36,7 +36,7 @@ const common = {
   },
 };
 
-if (env.NODE_ENV === 'production') {
+if (env.NODE_ENV.trim() === 'production') {
   module.exports = {
     ...common,
     mode: 'production',
