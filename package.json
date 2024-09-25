@@ -4,7 +4,7 @@
   "description": "S Toolkit",
   "scripts": {
     "build": "node ./scripts/build.js && webpack --config webpack.config.js",
-    "build:dev": "set NODE_ENV=development && pnpm build --watch",
+    "build:dev": "set NODE_ENV=development && pnpm build",
     "build:prod": "set NODE_ENV=production && pnpm build"
   },
   "dependencies": {
