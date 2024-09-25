@@ -24,10 +24,10 @@ const Nav: React.FC<NavProps> = (props) => {
 
   return (
     <div data-collapsed={isCollapsed} className="flex flex-col py-2">
-      <nav className="grid gap-1 group-[[data-collapsed=true]]:justify-center">
+      <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center">
         {links.map((link) =>
           isCollapsed ? (
-            <Tooltip key={link.key} delayDuration={0}>
+            <Tooltip key={link.key}>
               <TooltipTrigger asChild>
                 <Button
                   variant={activeKey === link.key ? 'default' : 'ghost'}

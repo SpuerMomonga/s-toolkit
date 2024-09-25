@@ -1,11 +1,19 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Nav, type LinkItem } from './nav';
-import { Search, Star, Languages } from 'lucide-react';
+import { Search, Star, Languages, MessageSquareText, Waypoints, Settings } from 'lucide-react';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
 
 const Sidebar: React.FC = () => {
   const links: LinkItem[] = [
+    {
+      key: 'chatting',
+      title: '聊天',
+      icon: MessageSquareText,
+    },
     {
       key: 'search',
       title: '搜索',
@@ -21,20 +29,45 @@ const Sidebar: React.FC = () => {
       title: '收藏',
       icon: Star,
     },
+    {
+      key: 'vpn',
+      title: 'vpn',
+      icon: Waypoints,
+    },
   ];
 
   return (
-    <TooltipProvider delayDuration={0}>
-      <div className="h-full w-14 flex flex-col p-2">
-        <div className="border-b-accent">logo</div>
-        <div className="flex-auto">
+    <TooltipProvider>
+      <div className="h-full flex flex-col">
+        <div className="border-b-accent p-2">logo</div>
+        <div className="h-px bg-border" />
+        <ScrollArea className="flex-auto p-2">
           <Nav isCollapsed={true} links={links} />
-        </div>
-        <div>
-          <Avatar>
-            <AvatarImage src="#" alt="SpuerMomonga" />
-            <AvatarFallback>ST</AvatarFallback>
-          </Avatar>
+        </ScrollArea>
+        <div className="h-px bg-border" />
+        <div className="p-2 grid gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Settings className="h-4 w-4" />
+                <span className="sr-only">设置</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="flex items-center gap-4">
+              设置
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Avatar className="h-9 w-9">
+                <AvatarImage src="#" alt="SpuerMomonga" />
+                <AvatarFallback>ST</AvatarFallback>
+              </Avatar>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="flex items-center gap-4">
+              账户
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </TooltipProvider>
