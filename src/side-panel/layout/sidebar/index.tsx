@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Nav, type LinkItem } from './nav';
+import { Nav, type LinkItem } from '@/components/nav';
 import { Search, Star, Languages, MessageSquareText, Waypoints, Settings } from 'lucide-react';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -8,7 +8,12 @@ import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip
 import { Button } from '@/components/ui/button';
 import { AvatarMenubar } from './menubar/avatar';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  entry: string;
+  onClick?: (key: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ entry, onClick }) => {
   const links: LinkItem[] = [
     {
       key: 'chatting',
@@ -43,7 +48,7 @@ const Sidebar: React.FC = () => {
         <div className="border-b-accent p-2">logo</div>
         <div className="h-px bg-border" />
         <ScrollArea className="flex-auto p-2">
-          <Nav isCollapsed={true} links={links} />
+          <Nav isCollapsed={true} selectedKey={entry} onClick={onClick} links={links} />
         </ScrollArea>
         <div className="h-px bg-border" />
         <div className="p-2 grid gap-2">
