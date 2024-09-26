@@ -22,7 +22,7 @@ const Nav: React.FC<NavProps> = (props) => {
   const { isCollapsed, links, onClick, selectedKey } = props;
 
   return (
-    <div data-collapsed={isCollapsed} className="flex flex-col py-2">
+    <div data-collapsed={isCollapsed} className="flex flex-col">
       <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center">
         {links.map((link) =>
           isCollapsed ? (

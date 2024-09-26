@@ -7,6 +7,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import { AvatarMenubar } from './menubar/avatar';
+import Logo from '@/components/icon/logo';
 
 interface SidebarProps {
   entry: string;
@@ -44,14 +45,16 @@ const Sidebar: React.FC<SidebarProps> = ({ entry, onClick }) => {
 
   return (
     <TooltipProvider>
-      <div className="h-full flex flex-col">
-        <div className="border-b-accent p-2">logo</div>
+      <div className="h-full flex flex-col gap-2 p-2">
+        <div className="h-8 w-9 flex justify-center items-center">
+          <Logo className="h-6 w-6 text-primary" />
+        </div>
         <div className="h-px bg-border" />
-        <ScrollArea className="flex-auto p-2">
+        <ScrollArea className="flex-auto">
           <Nav isCollapsed={true} selectedKey={entry} onClick={onClick} links={links} />
         </ScrollArea>
         <div className="h-px bg-border" />
-        <div className="p-2 grid gap-2">
+        <div className="grid gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon">
