@@ -9,6 +9,7 @@ const common = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
+    chunkFilename: 'assets/[name].js'
   },
   module: {
     rules: [
