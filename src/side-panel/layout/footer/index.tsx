@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { CircleHelp, Heart, Info } from 'lucide-react';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 import React from 'react';
+import url from '@/constants/url';
 
 const Footer: React.FC = () => {
   return (
@@ -19,11 +20,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-row gap-4">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                onClick={() => window.open('https://github.com/SpuerMomonga/s-toolkit')}
-                className="p-0 h-4 w-4 text-xs"
-              >
+              <Button variant="ghost" onClick={() => window.open(url.sToolkit)} className="p-0 h-4 w-4 text-xs">
                 <Heart className="h-4 w-4" />
                 <span className="sr-only">求Star</span>
               </Button>
@@ -35,7 +32,7 @@ const Footer: React.FC = () => {
               <Button
                 variant="ghost"
                 onClick={() => {
-                  window.open('https://github.com/SpuerMomonga/s-toolkit/issues');
+                  window.open(url.issues);
                 }}
                 className="p-0 h-4 w-4 text-xs"
               >
