@@ -1,11 +1,16 @@
 const path = require('path');
 const { env } = require('process');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const common = {
   entry: {
     background: './src/background/index.ts',
     popup: './src/popup/index.tsx',
     sidePanel: './src/side-panel/index.tsx',
+  },
+  performance: {
+    maxAssetSize: 512 * 1024, // 设置资产大小上限为 512 KiB
+    maxEntrypointSize: 512 * 1024, // 设置入口点大小上限为 512 KiB
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -37,9 +42,15 @@ const common = {
   },
 };
 
+const optimization = {
+  minimize: true,
+  minimizer: [new TerserPlugin()],
+}
+
 if (env.NODE_ENV.trim() === 'production') {
   module.exports = {
     ...common,
+    optimization,
     mode: 'production',
   };
 } else {
