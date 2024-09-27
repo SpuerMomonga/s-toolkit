@@ -1,13 +1,52 @@
 import { Button } from '@/components/ui/button';
-import { CircleHelp } from 'lucide-react';
+import { CircleHelp, Heart, Info } from 'lucide-react';
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 import React from 'react';
 
 const Footer: React.FC = () => {
   return (
     <div className="h-7 flex flex-row justify-between px-4 items-center">
-      <Button variant="ghost" className="p-0 h-4 w-4 text-xs">
-        <CircleHelp className="h-4 w-4" />
-      </Button>
+      <TooltipProvider>
+        <div className="flex flex-row gap-4">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                onClick={() => window.open('https://github.com/SpuerMomonga/s-toolkit')}
+                className="p-0 h-4 w-4 text-xs"
+              >
+                <Heart className="h-4 w-4" />
+                <span className="sr-only">求Star</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent className="flex items-center gap-4">求Star</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  window.open('https://github.com/SpuerMomonga/s-toolkit/issues');
+                }}
+                className="p-0 h-4 w-4 text-xs"
+              >
+                <CircleHelp className="h-4 w-4" />
+                <span className="sr-only">Issues</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent className="flex items-center gap-4">Issues</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" className="p-0 h-4 w-4 text-xs">
+                <Info className="h-4 w-4" />
+                <span className="sr-only">帮助文档</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent className="flex items-center gap-4">帮助文档</TooltipContent>
+          </Tooltip>
+        </div>
+      </TooltipProvider>
       <Button
         variant="link"
         className="p-0 h-4"
