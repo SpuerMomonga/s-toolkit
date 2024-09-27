@@ -12,7 +12,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, ...props }) => {
   return (
     <div className="h-full flex flex-row">
-      <div className="flex-auto p-2 flex flex-col">
+      <div className="flex-auto p-2 flex flex-col gap-2">
         <Header />
         <div className="flex-auto">{children}</div>
         <Footer />
