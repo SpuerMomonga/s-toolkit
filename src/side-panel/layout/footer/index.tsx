@@ -6,7 +6,16 @@ import React from 'react';
 const Footer: React.FC = () => {
   return (
     <div className="h-7 flex flex-row justify-between px-4 items-center">
-      <TooltipProvider>
+      <TooltipProvider delayDuration={0}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" className="p-0 h-4 w-4 text-xs">
+              <Info className="h-4 w-4" />
+              <span className="sr-only">关于</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent className="flex items-center gap-4">关于</TooltipContent>
+        </Tooltip>
         <div className="flex flex-row gap-4">
           <Tooltip>
             <TooltipTrigger asChild>
@@ -36,18 +45,9 @@ const Footer: React.FC = () => {
             </TooltipTrigger>
             <TooltipContent className="flex items-center gap-4">Issues</TooltipContent>
           </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" className="p-0 h-4 w-4 text-xs">
-                <Info className="h-4 w-4" />
-                <span className="sr-only">帮助文档</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent className="flex items-center gap-4">帮助文档</TooltipContent>
-          </Tooltip>
         </div>
       </TooltipProvider>
-      <Button
+      {/* <Button
         variant="link"
         className="p-0 h-4"
         onClick={() => {
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
         }}
       >
         © 2024 SM
-      </Button>
+      </Button> */}
     </div>
   );
 };
