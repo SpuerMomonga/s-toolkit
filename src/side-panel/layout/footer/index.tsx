@@ -44,15 +44,6 @@ const Footer: React.FC = () => {
           </Tooltip>
         </div>
       </TooltipProvider>
-      {/* <Button
-        variant="link"
-        className="p-0 h-4"
-        onClick={() => {
-          window.open('https://github.com/SpuerMomonga');
-        }}
-      >
-        © 2024 SM
-      </Button> */}
     </div>
   );
 };

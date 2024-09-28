@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "description": "一个好用的小工具",
+  "action": {
+    "default_title": "S Toolkit"
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"

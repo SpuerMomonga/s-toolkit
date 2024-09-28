@@ -5,7 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const common = {
   entry: {
     background: './src/background/index.ts',
-    popup: './src/popup/index.tsx',
+    // popup: './src/popup/index.tsx',
     sidePanel: './src/side-panel/index.tsx',
   },
   performance: {
@@ -14,7 +14,7 @@ const common = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    chunkFilename: 'assets/[name].js'
+    chunkFilename: 'assets/[name].js',
   },
   module: {
     rules: [
@@ -45,7 +45,7 @@ const common = {
 const optimization = {
   minimize: true,
   minimizer: [new TerserPlugin()],
-}
+};
 
 if (env.NODE_ENV.trim() === 'production') {
   module.exports = {

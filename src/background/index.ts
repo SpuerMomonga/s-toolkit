@@ -1,2 +1,6 @@
 import './src/runtime';
-import './src/context/index';
+import './src/bookmark';
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
+});
