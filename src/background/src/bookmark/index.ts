@@ -1,5 +1,10 @@
 import { isInternalBrowserUrl } from '@/lib/url';
 
+const uiState = {
+  isContextMenuOpen: false, // 代表上下文菜单是否打开
+  isBookmarkIcon: false, // 代表书签图标的状态
+};
+
 chrome.contextMenus.onClicked.addListener(createBookmark);
 
 function createBookmark(info: chrome.contextMenus.OnClickData, tab?: chrome.tabs.Tab) {
@@ -70,15 +75,16 @@ chrome.runtime.onInstalled.addListener(createBookmarkContextMenu);
 function updateBookmarkIconAndMenu(tab: chrome.tabs.Tab) {
   if (!tab.url) return;
   //浏览器内部url
-  if (isInternalBrowserUrl(tab.url)) {
+  if (isInternalBrowserUrl(tab.url) && !uiState.isContextMenuOpen) {
     removeBookmarkContextMenu();
+    uiState.isContextMenuOpen = false;
     return;
   }
 
   // TODO : 获取当前页是否收藏
   const url = 'https://ui.shadcn.com/docs/components/button'; // 伪代码
 
-  if (tab.url.trim() === url) {
+  if (tab.url.trim() === url && !uiState.isBookmarkIcon) {
     createUnbookmarkContextMenu();
     chrome.action.setIcon({
       path: {
@@ -87,6 +93,12 @@ function updateBookmarkIconAndMenu(tab: chrome.tabs.Tab) {
       },
       tabId: tab.id,
     });
+    uiState.isBookmarkIcon = true;
+  } else if (tab.url.trim() !== url && uiState.isBookmarkIcon) {
+    createBookmarkContextMenu();
+    uiState.isBookmarkIcon = false;
+  } else if (!uiState.isContextMenuOpen) {
+    createBookmarkContextMenu();
   }
 }
 
