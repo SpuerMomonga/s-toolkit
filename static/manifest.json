@@ -18,6 +18,19 @@
   "side_panel": {
     "default_path": "side-panel.html"
   },
-  "permissions": ["sidePanel", "contextMenus", "storage", "tabs", "activeTab", "scripting"],
-  "host_permissions": ["<all_urls>"]
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "settings.html"
+  },
+  "permissions": [
+    "sidePanel",
+    "contextMenus",
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
 }

@@ -7,6 +7,7 @@ const common = {
     background: './src/background/index.ts',
     // popup: './src/popup/index.tsx',
     sidePanel: './src/side-panel/index.tsx',
+    settings: './src/settings/index.tsx',
   },
   performance: {
     maxAssetSize: 512 * 1024, // 设置资产大小上限为 512 KiB
