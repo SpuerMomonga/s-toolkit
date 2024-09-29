@@ -31,8 +31,8 @@ const Sidebar: React.FC<SidebarProps> = ({ entry, onClick }) => {
       icon: Languages,
     },
     {
-      key: 'collect',
-      title: '收藏',
+      key: 'bookmark',
+      title: '书签',
       icon: Star,
     },
     {
