@@ -13,7 +13,7 @@ interface SidebarProps {
   onClick?: (key: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ entry, onClick }) => {
+const Sidebar: React.FC<SidebarProps> = (props) => {
   const links: LinkItem[] = [
     {
       key: 'chatting',
@@ -44,13 +44,14 @@ const Sidebar: React.FC<SidebarProps> = ({ entry, onClick }) => {
 
   return (
     <TooltipProvider>
-      <div className="h-full flex flex-col gap-2 p-2">
+      <aside className="h-full flex flex-col gap-2 p-2">
         <div className="h-8 w-9 flex justify-center items-center">
           <Logo className="h-6 w-6 text-primary" />
+          <span className="sr-only">Toolkit</span>
         </div>
         <div className="h-px bg-border" />
         <ScrollArea className="flex-auto">
-          <Nav isCollapsed={true} selectedKey={entry} onClick={onClick} links={links} />
+          <Nav isCollapsed={true} links={links} {...props} />
         </ScrollArea>
         <div className="h-px bg-border" />
         <div className="grid gap-2">
@@ -79,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ entry, onClick }) => {
             </Tooltip>
           </AvatarMenubar>
         </div>
-      </div>
+      </aside>
     </TooltipProvider>
   );
 };

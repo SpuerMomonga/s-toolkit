@@ -14,12 +14,12 @@ type LinkItem = {
 interface NavProps {
   isCollapsed: boolean;
   links: LinkItem[];
-  selectedKey: string;
+  entry: string;
   onClick?: (key: string) => void;
 }
 
 const Nav: React.FC<NavProps> = (props) => {
-  const { isCollapsed, links, onClick, selectedKey } = props;
+  const { isCollapsed, links, onClick, entry } = props;
 
   return (
     <div data-collapsed={isCollapsed} className="flex flex-col">
@@ -29,7 +29,7 @@ const Nav: React.FC<NavProps> = (props) => {
             <Tooltip key={link.key}>
               <TooltipTrigger asChild>
                 <Button
-                  variant={selectedKey === link.key ? 'default' : 'ghost'}
+                  variant={entry === link.key ? 'default' : 'ghost'}
                   size="icon"
                   onClick={() => {
                     onClick?.(link.key);
@@ -47,7 +47,8 @@ const Nav: React.FC<NavProps> = (props) => {
           ) : (
             <Button
               key={link.key}
-              variant={selectedKey === link.key ? 'default' : 'ghost'}
+              className="justify-start"
+              variant={entry === link.key ? 'default' : 'ghost'}
               onClick={() => {
                 onClick?.(link.key);
               }}
@@ -55,7 +56,7 @@ const Nav: React.FC<NavProps> = (props) => {
               <link.icon className="mr-2 h-4 w-4" />
               {link.title}
               {link.label && (
-                <span className={cn('ml-auto', selectedKey === link.key && 'text-background dark:text-white')}>
+                <span className={cn('ml-auto', entry === link.key && 'text-background dark:text-white')}>
                   {link.label}
                 </span>
               )}
