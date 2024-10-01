@@ -11,54 +11,55 @@ type LinkItem = {
   icon: LucideIcon;
   disabled?: boolean;
 };
+
+type SelectedItem = { key: string; title: string; label?: string };
+
 interface NavProps {
   isCollapsed: boolean;
   links: LinkItem[];
-  entry: string;
-  onClick?: (key: string) => void;
+  selectedKey: string;
+  onSelect?: (select: SelectedItem) => void;
 }
 
 const Nav: React.FC<NavProps> = (props) => {
-  const { isCollapsed, links, onClick, entry } = props;
+  const { isCollapsed, links, onSelect, selectedKey } = props;
 
   return (
     <div data-collapsed={isCollapsed} className="flex flex-col">
       <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center">
-        {links.map((link) =>
+        {links.map(({ key, title, label, ...link }) =>
           isCollapsed ? (
-            <Tooltip key={link.key}>
+            <Tooltip key={key}>
               <TooltipTrigger asChild>
                 <Button
-                  variant={entry === link.key ? 'default' : 'ghost'}
+                  variant={selectedKey === key ? 'default' : 'ghost'}
                   size="icon"
                   onClick={() => {
-                    onClick?.(link.key);
+                    onSelect?.({ key, title, label });
                   }}
                 >
                   <link.icon className="h-4 w-4" />
-                  <span className="sr-only">{link.title}</span>
+                  <span className="sr-only">{title}</span>
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="right" className="flex items-center gap-4">
-                {link.title}
-                {link.label && <span className="ml-auto text-muted-foreground">{link.label}</span>}
+                {title}
+                {label && <span className="ml-auto text-muted-foreground">{label}</span>}
               </TooltipContent>
             </Tooltip>
           ) : (
             <Button
-              key={link.key}
+              key={key}
               className="justify-start"
-              variant={entry === link.key ? 'default' : 'ghost'}
+              variant={selectedKey === key ? 'default' : 'ghost'}
               onClick={() => {
-                onClick?.(link.key);
+                onSelect?.({ key, title, label });
               }}
             >
               <link.icon className="mr-2 h-4 w-4" />
-              {link.title}
-              {link.label && (
-                <span className={cn('ml-auto', entry === link.key && 'text-background dark:text-white')}>
-                  {link.label}
-                </span>
+              {title}
+              {label && (
+                <span className={cn('ml-auto', selectedKey === key && 'text-background dark:text-white')}>{label}</span>
               )}
             </Button>
           ),
@@ -68,4 +69,4 @@ const Nav: React.FC<NavProps> = (props) => {
   );
 };
 
-export { Nav, type LinkItem };
+export { Nav, type LinkItem, type SelectedItem };

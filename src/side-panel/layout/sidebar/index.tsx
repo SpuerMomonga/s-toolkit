@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Nav, type LinkItem } from '@/components/nav';
+import { Nav, SelectedItem, type LinkItem } from '@/components/nav';
 import { Search, Star, Languages, MessageSquareText, Waypoints, Settings } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
@@ -9,39 +9,39 @@ import { AvatarMenubar } from './menubar/avatar';
 import Logo from '@/components/icon/logo';
 
 interface SidebarProps {
-  entry: string;
-  onClick?: (key: string) => void;
+  selectedKey: string;
+  onSelect?: (select: SelectedItem) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = (props) => {
-  const links: LinkItem[] = [
-    {
-      key: 'chatting',
-      title: '聊天',
-      icon: MessageSquareText,
-    },
-    {
-      key: 'search',
-      title: '搜索',
-      icon: Search,
-    },
-    {
-      key: 'translate',
-      title: '翻译',
-      icon: Languages,
-    },
-    {
-      key: 'bookmark',
-      title: '书签',
-      icon: Star,
-    },
-    {
-      key: 'vpn',
-      title: 'vpn',
-      icon: Waypoints,
-    },
-  ];
+const links: LinkItem[] = [
+  {
+    key: 'chatting',
+    title: '聊天',
+    icon: MessageSquareText,
+  },
+  {
+    key: 'search',
+    title: '搜索',
+    icon: Search,
+  },
+  {
+    key: 'translate',
+    title: '翻译',
+    icon: Languages,
+  },
+  {
+    key: 'bookmark',
+    title: '书签',
+    icon: Star,
+  },
+  {
+    key: 'vpn',
+    title: 'vpn',
+    icon: Waypoints,
+  },
+];
 
+const Sidebar: React.FC<SidebarProps> = (props) => {
   return (
     <TooltipProvider>
       <aside className="h-full flex flex-col gap-2 p-2">

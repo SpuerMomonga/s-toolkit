@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import Sidebar from './sidebar';
 import Header from './header';
+import { SelectedItem } from '@/components/nav';
 
 interface LayoutProps {
   children?: React.ReactNode;
-  entry: string;
-  onClick?: (key: string) => void;
+  selected: SelectedItem;
+  onSelect?: (select: SelectedItem) => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, ...props }) => {
+const Layout: React.FC<LayoutProps> = ({ children, selected, onSelect }) => {
   const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 900);
 
   const handleResize = () => {
@@ -27,14 +28,14 @@ const Layout: React.FC<LayoutProps> = ({ children, ...props }) => {
   return (
     <div className="w-[1200px] h-full mx-auto mt-12 overflow-y-auto">
       <div className="h-full mx-4 flex">
-        <Sidebar isCollapsed={isCollapsed} {...props} />
+        <Sidebar isCollapsed={isCollapsed} selectedKey={selected.key} onSelect={onSelect} />
         <div
           className={cn(
             'flex-1 flex flex-col gap-5 ms-64 mb-12 p-6 bg-background rounded-xl border shadow-lg',
             isCollapsed && 'ms-[72px]',
           )}
         >
-          <Header title="标题" />
+          <Header title={selected.title} />
           <div className="h-px bg-border" />
           {children}
         </div>

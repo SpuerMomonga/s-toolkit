@@ -1,13 +1,13 @@
 import React from 'react';
-import { LinkItem, Nav } from '@/components/nav';
+import { LinkItem, Nav, SelectedItem } from '@/components/nav';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { Search, Star, Languages, Settings, Waypoints } from 'lucide-react';
 import Logo from '@/components/icon/logo';
 
 interface SidebarProps {
-  entry: string;
-  onClick?: (key: string) => void;
+  selectedKey: string;
+  onSelect?: (select: SelectedItem) => void;
   isCollapsed: boolean;
 }
 
