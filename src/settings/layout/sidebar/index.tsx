@@ -13,7 +13,7 @@ interface SidebarProps {
 
 const links: LinkItem[] = [
   {
-    key: 'chatting',
+    key: 'base',
     title: '基本配置',
     icon: Settings,
   },
