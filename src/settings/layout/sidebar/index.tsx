@@ -2,7 +2,17 @@ import React from 'react';
 import { LinkItem, Nav, SelectedItem } from '@/components/nav';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { Search, Star, Languages, Settings, Waypoints } from 'lucide-react';
+import {
+  Search,
+  Star,
+  Languages,
+  Settings,
+  Waypoints,
+  Command,
+  MessageSquareText,
+  BrainCircuit,
+  MessageCircleQuestion,
+} from 'lucide-react';
 import Logo from '@/components/icon/logo';
 
 interface SidebarProps {
@@ -18,29 +28,39 @@ const links: LinkItem[] = [
     icon: Settings,
   },
   {
-    key: 'search',
-    title: '搜索设置',
-    icon: Search,
+    key: 'ai-options',
+    title: 'AI选择',
+    icon: BrainCircuit,
+  },
+  {
+    key: 'chatting',
+    title: '聊天',
+    icon: MessageSquareText,
   },
   {
     key: 'translate',
-    title: '翻译设置',
+    title: '翻译',
     icon: Languages,
   },
   {
     key: 'bookmark',
-    title: '书签设置',
+    title: '书签',
     icon: Star,
   },
   {
     key: 'vpn',
-    title: 'vpn设置',
+    title: 'VPN',
     icon: Waypoints,
+  },
+  {
+    key: 'command',
+    title: '快捷键',
+    icon: Command,
   },
   {
     key: 'ai-prompts',
     title: '提示词管理',
-    icon: Waypoints,
+    icon: MessageCircleQuestion,
   },
 ];
 
