@@ -4,10 +4,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const common = {
   entry: {
-    background: './src/background/index.ts',
-    // popup: './src/popup/index.tsx',
-    sidePanel: './src/side-panel/index.tsx',
-    settings: './src/settings/index.tsx',
+    background: './src/background',
+    sidePanel: './src/side-panel',
+    settings: './src/settings',
+    selection: './src/selection'
   },
   performance: {
     maxAssetSize: 512 * 1024, // 设置资产大小上限为 512 KiB
